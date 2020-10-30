@@ -1,0 +1,7 @@
+﻿/* Resets */
+body            { padding-top: 50px; padding-bottom: 20px; }
+
+/* Layout */
+.clearlow       { display: block; height: 15px; }
+.clearmed       { display: block; height: 30px; }
+.renderHtml     { white-space: pre-line; }

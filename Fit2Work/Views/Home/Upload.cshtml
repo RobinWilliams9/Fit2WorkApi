@@ -1,0 +1,90 @@
+﻿@using AnvilGroup.Applications.Fit2Work.Models
+@model UploadModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload users for @Model.ClientName</h2>
+<p>Import's a CSV file containing user data directly into any Fit2Work database.<br/><strong>NOTE:</strong> Expected CSV file format is below.  Please ensure phone numbers contain relevant country codes (i.e. 44):</p>
+<table class="table table-bordered table-striped table-sm">
+    <tr><th>FirstName</th><th>LastName</th><th>PhoneNumber</th></tr>
+    <tr><td>Joe</td><td>Bloggs</td><td>447003002001</td></tr>
+    <tr><td>Jane</td><td>Bloggs</td><td>447003002002</td></tr>
+</table>
+
+<div class="col-md-12" style="margin-top: 2%;padding-left: 0px;">
+    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "uploadForm" }))
+    {
+        <div class="form-group">
+            @Html.HiddenFor(model => model.ClientId)
+        </div>
+        <div class="form-group">
+            <label>@Model.ClientName</label>
+            @Html.TextBoxFor(model => model.File, null, new { @class = "form-control-file", type = "file", name = "upload" })
+            @Html.ValidationMessageFor(model => model.File)
+        </div>
+        <div class="clearmed"></div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Upload</button>
+            @Html.ActionLink("Cancel", "Details", "Client", new { id = Model.ClientId }, new { @class = "btn btn-danger" })
+        </div>
+        <div class="clearmed"><hr /></div>
+        <div class="form-group">
+            <ul id="progress" class="list-unstyled"></ul>
+        </div>
+    }
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(function () {
+            var progress = $.connection.progressHub;
+            progress.client.addProgressMessage = function (message) {
+                addProgressMsg(message);
+            };
+            $.connection.hub.start()
+                .done(function () {
+                    console.log("Hub connected");
+                })
+                .fail(function () {
+                    console.log("Hub failed to connect")
+                });
+            $('#uploadForm').submit(function (e) {
+                e.preventDefault();
+                clearProgress();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: '@Url.Action("Upload")',
+                    type: "POST",
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.success) {
+                            showGlobalSuccess("Uploaded completed!");                            
+                        } else {
+                            showGlobalError("Upload failed: " + response.responseText);
+                        }
+                    },
+                    error: function (response) {
+                        showGlobalError("Upload failed: " + response.responseText);
+                    }
+                });
+                return false;
+            });
+            function addProgressMsg(msg) {
+                console.log("addProgressMsg: " + msg);
+                $("#progress").append($("<li></li>").html(msg));
+            }
+            function clearProgress() {
+                console.log("clearProgress");
+                $("#progress").empty();
+            }
+        });
+    </script>
+}
+

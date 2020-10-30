@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="4f34a5ac-767c-4b16-81d8-c28525a2c5a1" ChangeDateTime="05/27/2020 17:08:04">
+    <Property Name="ElementName" Value="[dbo].[UserQuestionnaire].[CreatedDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserQuestionnaire]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="25d7b987-f14c-4de8-b9de-13d395a1266b" ChangeDateTime="05/27/2020 17:08:09">
+    <Property Name="ElementName" Value="[dbo].[UserQuestionnaire].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserQuestionnaire]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClientId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="72da4a06-9143-4885-b845-2a7a7ec32423" ChangeDateTime="05/27/2020 17:08:32">
+    <Property Name="ElementName" Value="[dbo].[UserQuestionnaire].[QuestionAndAnswer]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserQuestionnaire]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QuestionsAndAnswers" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b531204c-1624-44b8-af5d-10f60a0099c0" ChangeDateTime="05/30/2020 21:17:55">
+    <Property Name="ElementName" Value="[dbo].[User].[Updateddate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UpdatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6cbd315c-dc76-4b56-8ef8-8db9ef6933b3" ChangeDateTime="05/31/2020 06:48:50">
+    <Property Name="ElementName" Value="[dbo].[UserQuestionnaire].[QuestionsAndAnswers]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserQuestionnaire]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QuestionsAndAnswersData" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="00095fba-1bd5-44c3-84b5-d19265f6589a" ChangeDateTime="05/31/2020 06:57:32">
+    <Property Name="ElementName" Value="[dbo].[UserQuestionnaire].[QuestionsAndAnswersData]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserQuestionnaire]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QuestionsAndAnswers" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="573bcdc5-621c-4b9f-95ff-ce9aa3672667" ChangeDateTime="05/31/2020 06:58:05">
+    <Property Name="ElementName" Value="[dbo].[UserQuestionnaire].[QuestionsAndAnswers]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserQuestionnaire]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="QuestionsAndAnswersData" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dc6d793b-545c-40d2-a7f2-e74b09f1ce30" ChangeDateTime="05/31/2020 13:34:21">
+    <Property Name="ElementName" Value="[dbo].[Log].[StackTrace]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="   at AnvilGroup.Services.Fit2Work.Services.UserService.SubmitUserQuestionnaire(UserQuestionnaireModel questionnaire) in D:\_The" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5292d317-01f9-4a23-bab0-3a0f7217ba7e" ChangeDateTime="05/31/2020 13:34:25">
+    <Property Name="ElementName" Value="[dbo].[Log].[   at AnvilGroup.Services.Fit2Work.Services.UserService.SubmitUserQuestionnaire(UserQuestionnaireModel questionnaire) in D:\_The]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Log]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Details" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="51a70ce9-0bc5-499a-a8b1-658f29d67ff5" ChangeDateTime="05/31/2020 14:56:33">
+    <Property Name="ElementName" Value="[dbo].[Client].[Active]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Client]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsDeleted" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e7179633-e2a1-49aa-ba9a-ac1ff8abe2a2" ChangeDateTime="06/01/2020 09:14:17">
+    <Property Name="ElementName" Value="[dbo].[EmailTemplate].[PrimaryEmailSubjectPrefix]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EmailTemplate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PrimaryEmailSubject" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="53682f72-cb77-46ab-b15c-2e5abb4e261d" ChangeDateTime="06/02/2020 06:58:18">
+    <Property Name="ElementName" Value="[dbo].[EmailTemplate].[PrimaryEmailHeader]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EmailTemplate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EmailHeader" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8b74f526-269b-4ace-a3c2-c0f880b8bb61" ChangeDateTime="06/02/2020 06:58:22">
+    <Property Name="ElementName" Value="[dbo].[EmailTemplate].[PrimaryEmailFooter]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[EmailTemplate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="EmailFooter" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c1cf0c71-7e02-4f01-85e9-54a90ea7ec3d" ChangeDateTime="06/02/2020 07:05:46">
+    <Property Name="ElementName" Value="[dbo].[Resources].[SMSBody]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserMessageText" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="54086681-bfb0-453f-87a1-22a15286bfe5" ChangeDateTime="06/09/2020 15:41:30">
+    <Property Name="ElementName" Value="[dbo].[Resources].[LanguageCode]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CultureCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ee4b0d5e-020c-41d6-bf3e-73a8cfee29ab" ChangeDateTime="07/02/2020 14:18:13">
+    <Property Name="ElementName" Value="[dbo].[Resources].[UserPrimaryMessage]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserPrimaryMessageText" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="42b96734-12f0-4224-b9a2-45bbcdbb13e3" ChangeDateTime="07/02/2020 14:18:17">
+    <Property Name="ElementName" Value="[dbo].[Resources].[UserSecondaryMessage]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserSecondaryMessageText" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="80a644a7-efea-4cc0-8e91-1d3ab4841fdb" ChangeDateTime="07/08/2020 10:21:02">
+    <Property Name="ElementName" Value="[dbo].[Resources].[P:\alarkin]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MedicalUrl1" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6780e36a-0d97-4f5f-9271-427ca0445070" ChangeDateTime="07/08/2020 10:21:04">
+    <Property Name="ElementName" Value="[dbo].[Resources].[MedicalUrl1]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="MedicalUrl2" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6c63fcf7-03b4-45e1-b0ba-00807c6e0d87" ChangeDateTime="07/28/2020 12:49:28">
+    <Property Name="ElementName" Value="[dbo].[Resources].[DownlosfMessageText]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DownloadMessageText" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9422901b-3a0b-4422-a87d-d8948e5cece8" ChangeDateTime="07/28/2020 12:49:42">
+    <Property Name="ElementName" Value="[dbo].[Resources].[DownloadMessageText]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="AppStoreMessageText" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b15be86e-9bcc-44cf-a3ea-9b40ae46e3c2" ChangeDateTime="07/28/2020 13:28:09">
+    <Property Name="ElementName" Value="[dbo].[Resources].[AppStoreMessageText]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Resources]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DownloadMessageText" />
+  </Operation>
+</Operations>

@@ -1,0 +1,116 @@
+﻿@using AnvilGroup.Services.Fit2Work.Models
+@model UserInfoModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User details</h2>
+<div class="row">
+    <div class="col-md-6">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                User Id
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Id)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PhoneNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SmsSentDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SmsSentDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RegisteredDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RegisteredDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UpdatedDate)
+            </dd>
+        </dl>
+        <p>
+            @Html.ActionLink("View all users", "Index", "User", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+    <div class="col-md-6">
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ClientId)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ClientId)
+            </dd>
+
+            <dt>
+                Client
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Client.Name)
+            </dd>
+        </dl>
+        <p>
+            @Html.ActionLink("View Client", "Details", "Client", new { id = Model.ClientId }, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+</div>
+<div class="clearmed"><hr/></div>
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("Partials/_QuestionnaireList", (IEnumerable<UserQuestionnaireModel>)ViewBag.UserQuestionnaires)
+    </div>
+</div>
+
+

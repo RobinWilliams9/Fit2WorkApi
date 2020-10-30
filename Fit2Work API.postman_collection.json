@@ -1,0 +1,509 @@
+{
+	"info": {
+		"_postman_id": "e8ce1e88-ec20-4443-90a9-d98434d1bd9b",
+		"name": "Fit2Work API",
+		"description": "URLs for API:\r\n- LOCAL: http://localhost:62780/\r\n- INTEGRATION: https://integration.anvilgroup.com/apis/fit2workapi/api/\r\n- CLONE: https://clone.anvilgroup.com/apis/fit2workapi/api/\r\n- PROD: tbc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9ad9a439-ff27-4513-b5a3-72dcb8c723d4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}api/version",
+					"host": [
+						"{{Fit2WorkApiUrl}}api"
+					],
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d9da0abd-ad96-4598-8dc5-e76814a0a3a1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}api/version",
+					"host": [
+						"{{Fit2WorkApiUrl}}api"
+					],
+					"path": [
+						"version"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MemberCode Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1546c1fd-feb0-41e8-ae1c-253e73a1a905",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Client member code is test1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.MemberCode).to.eql(\"anvilgroup\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/client/anvilgroup",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"client",
+						"anvilgroup"
+					]
+				},
+				"description": "Query member code for test 'client1'"
+			},
+			"response": [
+				{
+					"name": "Test MemberCode",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Fit2WorkApiUrl}}/api/client/test1",
+							"host": [
+								"{{Fit2WorkApiUrl}}"
+							],
+							"path": [
+								"api",
+								"client",
+								"test1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Content-Length",
+							"value": "210"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						},
+						{
+							"key": "Expires",
+							"value": "-1"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-AspNet-Version",
+							"value": "4.0.30319"
+						},
+						{
+							"key": "X-SourceFiles",
+							"value": "=?UTF-8?B?RDpcX1RoZUFudmlsR3JvdXBcU2VydmljZXNcRml0MldvcmtBcGlcTWFpblxGaXQyV29ya0FwaVNvbHV0aW9uXEZpdDJXb3JrQXBpXGFwaVxjbGllbnRcdGVzdDE=?="
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 31 May 2020 08:12:50 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\"Id\":1,\"Name\":\"TestClient1\",\"MemberCode\":\"test1\",\"Active\":false,\"PrimaryEmailAddress\":\"primary@test.ing\",\"SecondaryEmailAddress\":\"secondary@test.ing\",\"CreatedDate\":\"2020-05-31T09:07:47.627\",\"UpdatedDate\":null}"
+				}
+			]
+		},
+		{
+			"name": "MemberCode NotFound",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1546c1fd-feb0-41e8-ae1c-253e73a1a905",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/client/anvilgroupx",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"client",
+						"anvilgroupx"
+					]
+				},
+				"description": "Query member code for test 'client1'"
+			},
+			"response": []
+		},
+		{
+			"name": "Register Test User Success",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "54674c3c-24c4-4bea-aa74-1a04f761dc54",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Verify ClientId\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.ClientId).to.eql(1);",
+							"});",
+							"pm.test(\"Verify PhoneNumber\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.PhoneNumber).to.eql(\"447003002001\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "LbeFsTRmzVFMXcmzBX9o1pVTT5q8OUsjoltyS+90BZpCxG4bMwZX+1LVERMJX3Wu",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"ClientId\": 1,\r\n\t\"FirstName\": \"Test\",\r\n    \"LastName\": \"User\",\r\n    \"PhoneNumber\": \"447003002001\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/user",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Test User With Invalid Phone Number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72bd4cb1-244b-4d14-895b-f02d81f3f380",
+						"exec": [
+							"pm.test(\"Status code is 406\", function () {",
+							"    pm.response.to.have.status(406);",
+							"});",
+							"pm.test(\"Verify Message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Message).to.contain(\"07003002001 is invalid.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "LbeFsTRmzVFMXcmzBX9o1pVTT5q8OUsjoltyS+90BZpCxG4bMwZX+1LVERMJX3Wu",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"ClientId\": 1,\r\n\t\"FirstName\": \"Test\",\r\n    \"LastName\": \"User\",\r\n    \"PhoneNumber\": \"07003002001\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/user",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Test User Not Found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81e90797-e698-44d6-843c-83f1d61ee592",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Verify Message\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.Message).to.contain(\"Failed to find user\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"ClientId\": 1,\r\n\t\"FirstName\": \"Test\",\r\n    \"LastName\": \"User\",\r\n    \"PhoneNumber\": \"441122334455\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/user",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit Fit2Work for Test User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "921d8f2c-a6b0-4e57-8e3e-675d3d450eaf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include('\"IsFitToWork\":true');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "LbeFsTRmzVFMXcmzBX9o1pVTT5q8OUsjoltyS+90BZpCxG4bMwZX+1LVERMJX3Wu",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserId\": 1,\r\n    \"QuestionsAndAnswers\": [\r\n        {\r\n            \"Question\": \"Do you have a temperature?\",\r\n            \"Answer\": \"No\"\r\n        },\r\n        {\r\n            \"Question\": \"Do you have a constant cough?\",\r\n            \"Answer\": \"No\"\r\n        },\r\n        {\r\n            \"Question\": \"Have you lost your sense of taste or smell?\",\r\n            \"Answer\": \"No\"\r\n        },\r\n        {\r\n            \"Question\": \"In the last 14 days have you been in contact with a anyone with COVID-19 symptoms?\",\r\n            \"Answer\": \"No\"\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/questionnaire",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"questionnaire"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit NOT Fit2Work for Test User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4b84487d-bfc0-4c2f-afe2-f98c74ac2dcc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include('\"IsFitToWork\":false');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "LbeFsTRmzVFMXcmzBX9o1pVTT5q8OUsjoltyS+90BZpCxG4bMwZX+1LVERMJX3Wu",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserId\": 1,\r\n    \"QuestionsAndAnswers\": [\r\n        {\r\n            \"Question\": \"Do you have a temperature?\",\r\n            \"Answer\": \"Yes\"\r\n        },\r\n        {\r\n            \"Question\": \"Do you have a constant cough?\",\r\n            \"Answer\": \"No\"\r\n        },\r\n        {\r\n            \"Question\": \"Have you lost your sense of taste or smell?\",\r\n            \"Answer\": \"No\"\r\n        },\r\n        {\r\n            \"Question\": \"In the last 14 days have you been in contact with a anyone with COVID-19 symptoms?\",\r\n            \"Answer\": \"No\"\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "{{Fit2WorkApiUrl}}/api/questionnaire",
+					"host": [
+						"{{Fit2WorkApiUrl}}"
+					],
+					"path": [
+						"api",
+						"questionnaire"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c52b7611-1cad-4c62-8ba2-17ad6a4ed159",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "dfb8a24b-cc6f-4b82-b3ea-ac9ba60ab97b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,122 @@
+﻿@using AnvilGroup.Services.Fit2Work.Models
+@model List<UserInfoModel>
+@{
+    // required to ensure fields are named correctly for posting to controller
+    var Users = Model;
+}
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.UserCount Users</h2>
+        @if (Users.Count() > 0 && ViewBag.AllowSelectUsers != null && ViewBag.AllowSelectUsers == true)
+        {
+            <button id="btnSelectNoUsers" type="button" class="btn btn-warning">Clear</button>
+            <button id="btnSelectAllRegisteredUsers" type="button" class="btn btn-primary">Select non-registered</button>
+            <button id="btnSelectAllNoSMSUsers" type="button" class="btn btn-primary">Select users without SMS</button>
+        }
+        <div class="clearmed"></div>
+        <table id="tableUserList" class="table table-striped table-sm">
+            <tr>
+                @if (ViewBag.AllowSelectUsers != null && ViewBag.AllowSelectUsers == true)
+                {
+                    <th></th>
+                }
+                <th>
+                    Id
+                </th>
+                <th>
+                    Client
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    Created
+                </th>
+                <th>
+                    SMS Sent
+                </th>
+                <th>
+                    Registered
+                </th>
+                <th>
+                    Updated
+                </th>
+                <th>Actions</th>
+            </tr>
+            @for (int i = 0; i < Users.Count; i++)
+            {
+                <tr>
+                    @if (ViewBag.AllowSelectUsers != null && ViewBag.AllowSelectUsers == true)
+                    {
+                        <td>
+                            @Html.CheckBoxFor(m => Users[i].Selected, new { @data_user_select = "" })
+                        </td>
+                    }
+                    <td>
+                        @Html.HiddenFor(m => Users[i].Id)
+                        @Html.DisplayFor(m => Users[i].Id)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => Users[i].Client.Name)
+                        @Html.DisplayFor(m => Users[i].Client.Name)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => Users[i].FirstName)
+                        @Html.DisplayFor(m => Users[i].FirstName)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => Users[i].LastName)
+                        @Html.DisplayFor(m => Users[i].LastName)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => Users[i].PhoneNumber)
+                        @Html.DisplayFor(m => Users[i].PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => Users[i].CreatedDate)
+                        @Html.DisplayFor(m => Users[i].CreatedDate)
+                    </td>
+                    <td data-user-sms="@string.IsNullOrEmpty(Users[i].SmsSentDate.ToString())">
+                        @Html.HiddenFor(m => Users[i].SmsSentDate)
+                        @Html.DisplayFor(m => Users[i].SmsSentDate)
+                    </td>
+                    <td data-user-registered="@string.IsNullOrEmpty(Users[i].RegisteredDate.ToString())">
+                        @Html.HiddenFor(m => Users[i].RegisteredDate)
+                        @Html.DisplayFor(m => Users[i].RegisteredDate)
+                    </td>
+                    <td>
+                        @Html.HiddenFor(m => Users[i].UpdatedDate)
+                        @Html.DisplayFor(m => Users[i].UpdatedDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("View", "Details", "User", new { id = Users[i].Id }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+        <nav>
+            <ul class="pagination">
+                @if (ViewBag.pageNumber > 1)
+                {
+                    <li class="page-item @((int)ViewBag.pageNumber == 1 ? "disabled" : "")">
+                        @Html.ActionLink("Previous", "Index", "User", new { area = "", pageNumber = (ViewBag.pageNumber - 1), maxPerPage = ViewBag.maxPerPage }, new { @class = "nav-link btn btn-primary" })
+                    </li>
+                    <li>&nbsp;</li>
+                }
+
+                @if (ViewBag.UserCount > ViewBag.pageNumber * ViewBag.maxPerPage)
+                {
+                    <li class="page-item ">
+                        @Html.ActionLink("Next", "Index", "User", new { area = "", pageNumber = (ViewBag.pageNumber + 1), maxPerPage = ViewBag.maxPerPage }, new { @class = "nav-link btn btn-primary" })
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+</div>

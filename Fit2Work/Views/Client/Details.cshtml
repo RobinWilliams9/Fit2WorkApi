@@ -1,0 +1,112 @@
+﻿@using System.Linq
+@using AnvilGroup.Services.Fit2Work.Models
+@model ClientModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>[View] | @Model.Name</h2>
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MemberCode)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.MemberCode)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrimaryEmailAddress)
+                </dt>
+                <dd>
+                    <ul class="list-unstyled">
+                        @foreach (var email in Model.PrimaryEmailAddress.Split(','))
+                        {
+                            <li>@email</li>
+                        }
+                    </ul>
+                <dt>
+                    @Html.DisplayNameFor(model => model.SecondaryEmailAddress)
+                </dt>
+                <dd>
+                    <ul class="list-unstyled">
+                        @foreach (var email in Model.SecondaryEmailAddress.Split(','))
+                        {
+                            <li>@email</li>
+                        }
+                    </ul>
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsDeleted)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.IsDeleted)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.UpdatedDate)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.UpdatedDate)
+                </dd>
+            </dl>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+                <a onclick="location.reload();" href="#" class="btn btn-warning">Refresh</a>
+                @Html.ActionLink("<< Back to List", "Index", "Home", null, new { @class = "btn btn-primary" })
+            </p>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Additional information</div>
+                <div class="card-body">
+                    <ul>
+                        <li><span id="clientUserCount">@Model.Users.Count()</span> user(s) uploaded</li>
+                        <li>@ViewBag.RegiseredUserCount user(s) registered via app</li>
+                        <li>@ViewBag.QuestionnareDailyCount questionnaire(s) submitted today</li>
+                        <li>@ViewBag.QuestionnareTotalCount questionnaire(s) submitted overall</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearmed"><hr /></div>
+    @using (Html.BeginForm("ViewSMS", "Home", FormMethod.Post, null))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Name)
+        <div class="row">
+            <div class="col-md-12">
+                <p id="noUsersNotice" style="display:none;"><strong>There are no users for this client. Click the "Upload users" button below to upload user data.</strong></p>
+                <p id="sendSMSNotice" style="display:none;"><strong>Select some users from the list below to send an SMS.</strong></p>
+                <p id="allUsersSMSNotice" class="text-warning" style="display:none;"><strong>You have selected ALL users for this client. Are you sure you want to send SMS to all?</strong></p>
+                <p id="nonRegisteredUsersSMSNotice" class="text-warning" style="display:none;"><strong>You have selected non-registered users for this client.  This means some users may have already received the SMS. Are you sure you want to send SMS to all?</strong></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.ActionLink("Upload users", "Upload", "Home", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                <button id="btnSendSms" type="submit" class="btn btn-primary disabled">Send SMS</button>
+            </div>
+        </div>
+        <div class="clearmed"><hr /></div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Partial("Partials/_UserList", Model.Users)
+            </div>
+        </div>
+    }
+</div>

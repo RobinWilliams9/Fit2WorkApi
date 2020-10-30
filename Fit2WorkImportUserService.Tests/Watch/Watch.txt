@@ -1,0 +1,1 @@
+﻿// File purely to force the \bin\Watch folder to be created

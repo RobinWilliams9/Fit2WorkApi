@@ -1,0 +1,118 @@
+﻿@model AnvilGroup.Services.Fit2Work.Models.ResourceModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>[Edit] | @Model.CultureCode Resources</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.CultureCode)
+
+    <div class="form-group">
+        <strong>Current placeholders are: </strong>
+        <ul>
+            <li>{clientName} - client's company name (i.e. AnvilGroup)</li>
+            <li>{memberCode} - client's member code (i.e. anvilgroup)</li>
+            <li>{firstName} - user's first name</li>
+            <li>{lastName} - user's last name</li>
+            <li>{header} - the contents of the EmailHeader field for use within HTML email sent to clients</li>
+            <li>{footer} - the contents of the EmailFooter field for use within HTML email sent to clients</li>
+            <li>{AppleAppStoreUrl} - The url for the iOS app store</li>
+            <li>{GooglePlayStoreUrl} - The url for the Android app store</li>
+        </ul>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailHeader, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.EmailHeader, 10, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmailHeader, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmailFooter, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.EmailFooter, 10, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmailFooter, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrimaryEmailSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.PrimaryEmailSubject, 2, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PrimaryEmailSubject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PrimaryEmailBody, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.PrimaryEmailBody, 10, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PrimaryEmailBody, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SecondaryEmailSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.SecondaryEmailSubject, 2, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SecondaryEmailSubject, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SecondaryEmailBody, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.SecondaryEmailBody, 10, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.SecondaryEmailBody, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserMessageText, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.UserMessageText, 5, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.UserMessageText, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DownloadMessageText, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.DownloadMessageText, 5, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.DownloadMessageText, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserPrimaryMessageText, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.UserPrimaryMessageText, 5, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.UserPrimaryMessageText, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserSecondaryMessageText, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.UserSecondaryMessageText, 5, 300, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.UserSecondaryMessageText, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-success" />
+            @Html.ActionLink("Cancel", "Details", "Resources", new { id = Model.Id }, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+</div>
+}

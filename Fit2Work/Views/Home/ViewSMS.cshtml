@@ -1,0 +1,96 @@
+﻿@using AnvilGroup.Applications.Fit2Work.Models
+@model SMSModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Send SMS for @Model.Client.Name</h2>
+<p>Send SMS message to all the users for this client.</p>
+<div class="row">
+    <div class="col-md-12" style="margin-top: 2%;padding-left: 0px;">
+        @using (Html.BeginForm("SendSMS", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "smsForm" }))
+        {
+            <div class="form-group">
+                @Html.HiddenFor(model => model.Client.Id)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.MessageText)
+                <p><em><strong>@Model.MessageText</strong></em></p>
+                @Html.LabelFor(model => model.DownloandLinkMessageText)
+                <p><em><strong>@Model.DownloandLinkMessageText</strong></em></p>
+            </div>
+            <div class="clearmed"></div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Send SMS to @Model.Users.Count() user(s)</button>
+                @Html.ActionLink("Cancel", "Details", "Client", new { id = Model.Client.Id }, new { @class = "btn btn-danger" })
+            </div>
+            <div class="clearmed"><hr /></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul id="progress" class="list-unstyled"></ul>
+                </div>
+            </div>
+            <div class="clearmed"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Partial("Partials/_UserList", Model.Users)
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(document).ready(function () {
+            var progress = $.connection.progressHub;
+            progress.client.addProgressMessage = function (message) {
+                addProgressMsg(message);
+            };
+            $.connection.hub.start()
+                .done(function () {
+                    console.log("Hub connected");
+                })
+                .fail(function () {
+                    console.log("Hub failed to connect")
+                });
+            $('#smsForm').submit(function (e) {
+                e.preventDefault();
+                clearProgress();
+                var formData = new FormData(this);
+                $.ajax({
+                    url: '@Url.Action("SendSMS")',
+                    type: "POST",
+                    data: formData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.success) {
+                            showGlobalSuccess("Send SMS completed!");
+                        } else {
+                            showGlobalError("Send SMS failed: " + response.responseText);
+                        }
+                    },
+                    error: function (response) {
+                        showGlobalError("Send SMS failed: " + response.responseText);
+                    }
+                });
+                return false;
+            });
+            function addProgressMsg(msg) {
+                console.log("addProgressMsg: " + msg);
+                $("#progress").append($("<li></li>").html(msg));
+            }
+            function clearProgress() {
+                console.log("clearProgress");
+                $("#progress").empty();
+            }
+        });
+    </script>
+}
+

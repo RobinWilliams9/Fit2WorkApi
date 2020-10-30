@@ -1,0 +1,102 @@
+﻿@model AnvilGroup.Services.Fit2Work.Models.ResourceModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>[View] | @Model.CultureCode Resources</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CultureCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CultureCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailHeader)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailHeader)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailFooter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailFooter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryEmailSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryEmailSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryEmailBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryEmailBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryEmailSubject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryEmailSubject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondaryEmailBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondaryEmailBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserMessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserMessageText)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DownloadMessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DownloadMessageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPrimaryMessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPrimaryMessageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserSecondaryMessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserSecondaryMessageText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+    @Html.ActionLink("<< Back to List", "Index", null, new { @class = "btn btn-primary" })
+</p>
