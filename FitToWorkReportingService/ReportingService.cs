@@ -56,6 +56,7 @@ namespace FitToWorkReportingService
             var userList = v.OrderBy(f=>f.FirstName + " " + f.LastName).ToList();
             var clientlist = clientService.GetClients();
 
+            //for each client get list of users with no assessment that day and send email to the primary address
             foreach(var c in clientlist)
             {
                 var clientuser = userList.Where(x => x.ClientId == c.Id).ToList();
